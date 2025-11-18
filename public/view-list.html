@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Packing List</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="view-list.css">
+</head>
+<body>
+    <header class="header">
+        <button class="btn btn-back" onclick="window.location.href='list-lists.html'">Back</button>
+        <div id="list-title" class="header-title">Loading...</div>
+        <button class="btn btn-secondary" onclick="editListTitle()">Settings</button>
+    </header>
+
+    <main class="container-full">
+        <div class="sidebar">
+            <div class="trip-summary">
+                <h3>Trip Summary</h3>
+                <p id="summary-items">0 items total</p>
+                <p id="summary-packed">0 items packed</p>
+            </div>
+            
+            <div class="progress-donut">
+                <svg width="160" height="160">
+                    <circle cx="80" cy="80" r="65" fill="none" stroke="rgba(157, 91, 210, 0.2)" stroke-width="16"/>
+                    <circle id="progress-circle" cx="80" cy="80" r="65" fill="none" 
+                            stroke="url(#gradient)" stroke-width="16" 
+                            stroke-dasharray="408.41" stroke-dashoffset="408.41" 
+                            transform="rotate(-90 80 80)" stroke-linecap="round"
+                            style="transition: stroke-dashoffset 0.5s ease;"/>
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#9D5BD2;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#4A9EFF;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <text x="80" y="75" text-anchor="middle" font-size="32" font-weight="bold" fill="#FFFFFF" id="progress-percent">0%</text>
+                    <text x="80" y="95" text-anchor="middle" font-size="13" fill="#9B9B9B">Complete</text>
+                </svg>
+            </div>
+
+            <div class="category-filter">
+                <h4>Categories</h4>
+                <div id="category-list">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div id="loading" class="loading" style="display: none;">
+                Loading list...
+            </div>
+
+            <div id="error-message" class="error-message" style="display: none;"></div>
+
+            <div id="main-view" style="display: none;">
+                <div class="filter-bar">
+                    <button class="filter-btn active" data-filter="all">All Items</button>
+                    <button class="filter-btn" data-filter="Clothing">Clothing</button>
+                    <button class="filter-btn" data-filter="Toiletries">Toiletries</button>
+                    <button class="filter-btn" data-filter="Electronics">Electronics</button>
+                    <button class="filter-btn" data-filter="Documents">Documents</button>
+                    <button class="filter-btn" data-filter="Accessories">Accessories</button>
+                </div>
+
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search items...">
+                </div>
+
+                <div id="items-container">
+                   
+                </div>
+
+                <div id="empty-items" style="display: none; text-align: center; padding: 3rem; color: #9B9B9B;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #FFFFFF;">No Items Yet</h3>
+                    <p>Start adding items to your packing list!</p>
+                </div>
+
+                <button class="btn-add-item" onclick="addItem()">+ Add Item</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="view-list.js"></script>
+</body>
+</html>

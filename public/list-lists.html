@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packing List - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="hero-banner">
+        <div class="hero-content">
+            <h1>Plan Your Perfect Trip</h1>
+            <p>Organize everything you need, never forget a thing</p>
+        </div>
+    </div>
+
+    <header class="dashboard-header">
+        <div class="logo-section">
+            <div class="logo">Packing Organizer</div>
+        </div>
+        <button class="btn btn-primary" onclick="window.location.href='add-list.html'">New Trip</button>
+    </header>
+
+    <div id="loading" class="loading" style="display: none;">
+        <p>Loading your packing lists...</p>
+    </div>
+
+    <div id="error-message" class="error-message" style="display: none;"></div>
+
+    <main class="dashboard-container">
+        
+        <section class="dashboard-section">
+            <h2 class="section-title">Current Trip</h2>
+            
+            <div id="current-trip-container">
+              
+            </div>
+        </section>
+
+        <section class="dashboard-section">
+            <h2 class="section-title">Upcoming Trips</h2>
+            
+            <div id="upcoming-trips-container" class="trips-grid">
+            </div>
+        </section>
+
+        <div id="empty-state" class="empty-state-dashboard" style="display: none;">
+            <h3>No Trips Yet</h3>
+            <p>Create your first packing list to get started!</p>
+            <button class="btn btn-primary" onclick="window.location.href='add-list.html'">Create Your First Trip</button>
+        </div>
+
+    </main>
+
+    <script src="list-lists.js"></script>
+</body>
+</html>

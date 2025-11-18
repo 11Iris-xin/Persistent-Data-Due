@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Packing List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Packing Organizer</div>
+    </header>
+
+    <main class="container">
+        <div class="form-container">
+            <h1>Create New Packing List</h1>
+            
+            <div id="error-message" class="error-message" style="display: none;"></div>
+            <div id="success-message" class="success-message" style="display: none;"></div>
+
+            <form id="add-list-form">
+                <div class="form-group">
+                    <label for="listTitle">List Name *</label>
+                    <input 
+                        type="text" 
+                        id="listTitle" 
+                        placeholder="e.g., Summer Vacation, Business Trip to Tokyo"
+                        required
+                        autofocus
+                    >
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='list-lists.html'">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create List</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="add-list.js"></script>
+</body>
+</html>

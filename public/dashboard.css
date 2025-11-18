@@ -1,0 +1,395 @@
+
+.hero-banner {
+    width: 100%;
+    height: 220px;
+    background: url(img/background.jpg) center/cover;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.05) 70%, transparent 70%),
+        linear-gradient(-45deg, transparent 30%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.05) 70%, transparent 70%);
+    background-size: 60px 60px;
+    opacity: 0.5;
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+    z-index: 1;
+    padding: 2rem;
+    position: relative;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    letter-spacing: -1px;
+    color: white;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    opacity: 0.95;
+    font-weight: 400;
+}
+
+.dashboard-header {
+    background: var(--bg-card);
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.dashboard-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.dashboard-section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    padding-left: 0.5rem;
+    border-left: 4px solid var(--accent-purple);
+}
+
+.current-trip-card {
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(40, 40, 40, 0.95) 100%);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.current-trip-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #A0724E, #B8956A);
+}
+
+.trip-header {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.trip-tab {
+    padding: 0.75rem 1.5rem;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.trip-tab.active {
+    background: #A0724E;
+    color: white;
+    border-color: #A0724E;
+    box-shadow: 0 4px 12px rgba(160, 114, 78, 0.3);
+}
+
+.trip-content {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.trip-progress {
+    flex-shrink: 0;
+}
+
+.progress-circle-large {
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+.progress-circle-large svg {
+    transform: rotate(-90deg);
+    filter: drop-shadow(0 4px 12px rgba(157, 91, 210, 0.2));
+}
+
+.progress-text-large {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.progress-text-large .percentage {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.progress-text-large .label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+
+.trip-info {
+    flex: 1;
+}
+
+.trip-info h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.trip-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-item {
+    background: rgba(160, 114, 78, 0.1);
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(160, 114, 78, 0.2);
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #A0724E;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+
+.trip-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.trips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.trip-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(40, 40, 40, 0.95) 100%);
+}
+
+.trip-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #A0724E, #B8956A);
+}
+
+.trip-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-purple);
+}
+
+.trip-card-header {
+    margin-bottom: 1rem;
+}
+
+.trip-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.trip-card-date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+.progress-circle-small {
+    width: 120px;
+    height: 120px;
+    margin: 1.5rem auto;
+    position: relative;
+}
+
+.progress-circle-small svg {
+    transform: rotate(-90deg);
+}
+
+.progress-text-small {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.progress-text-small .percentage {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.progress-text-small .label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+.card-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.card-actions .btn {
+    flex: 1;
+    padding: 0.625rem;
+    font-size: 0.9rem;
+    justify-content: center;
+}
+
+.empty-state-small {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-secondary);
+}
+
+.empty-state-small p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.empty-state-dashboard {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: var(--bg-card);
+    border-radius: 20px;
+    margin-top: 3rem;
+    border: 2px dashed var(--border-color);
+}
+
+.empty-state-dashboard h3 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.empty-state-dashboard p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+@media (max-width: 1024px) {
+    .trip-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .trip-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .dashboard-header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .dashboard-container {
+        padding: 2rem 1rem;
+    }
+    
+    .trips-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .current-trip-card {
+        padding: 1.5rem;
+    }
+    
+    .trip-actions {
+        flex-direction: column;
+    }
+    
+    .trip-actions .btn {
+        width: 100%;
+    }
+}
