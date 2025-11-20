@@ -10,14 +10,22 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
+
+// 添加静态文件支持 - public 文件夹
 app.use(express.static('public'));
+
+// 添加静态文件支持 - img 文件夹（如果 img 在项目根目录）
+app.use('/img', express.static('img'));
+
+// 或者如果你的 img 在其他位置，使用绝对路径
+// app.use('/img', express.static(path.join(__dirname, 'img')));
 
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/packing-list';
 
 mongoose.connect(MONGODB_URI)
-    .then(() => console.log('✅ Connected to MongoDB'))
-    .catch(err => console.error('❌ MongoDB connection error:', err));
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.error(' MongoDB connection error:', err));
 
 const packingListSchema = new mongoose.Schema({
     title: {
@@ -276,5 +284,5 @@ app.delete('/api/lists/:listId/items/:itemId', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server is running on http://localhost:${PORT}`);
+    console.log(` Server is running on http://localhost:${PORT}`);
 });

@@ -1,27 +1,28 @@
 const API_URL = 'http://localhost:3000/api';
 
+// 图片在根目录的 img 文件夹中，需要先配置 server.js
 const colorSchemes = [
-    'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-    'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-    'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-    'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-    'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
-    'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
-    'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
+  "linear-gradient(135deg, rgba(184, 149, 106, 0.6), rgba(160, 114, 78, 0.6)), url('/img/bg_1.jpeg')",
+  "linear-gradient(135deg, rgba(206, 183, 179, 0.6), rgba(168, 187, 163, 0.6)), url('/img/bg_2.jpeg')",
+  "linear-gradient(135deg, rgba(160, 114, 78, 0.6), rgba(184, 149, 106, 0.6)), url('/img/bg_3.jpeg')"
 ];
 
 
-const travelIcons = ['', '', '', '', '', '', '', '', '', '', '', ''];
+const travelIcons = [];
 
 const priorityTags = ['Top', 'Middle', 'Low'];
 const priorityClasses = ['tag-top', 'tag-middle', 'tag-low'];
+const getPriorityIndex = (list) => {
+    const totalItems = list.items.length;
+    if (totalItems > 15) return 0;   
+    if (totalItems > 8) return 1;  
+    return 2;                     
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     loadLists();
     initializeTabs();
 });
-
 
 function initializeTabs() {
     const tabs = document.querySelectorAll('.tab-item');
@@ -38,6 +39,15 @@ function initializeTabs() {
             viewBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
         });
+    });
+}
+
+function generateInitialIcons(lists) {
+    return lists.map(list => {
+        if (!list.title || list.title.trim() === '') {
+            return '?';
+        }
+        return list.title.charAt(0).toUpperCase();
     });
 }
 
@@ -70,6 +80,9 @@ async function loadLists() {
             emptyState.style.display = 'block';
             return;
         }
+
+        travelIcons.length = 0;
+        travelIcons.push(...generateInitialIcons(lists));
 
         const currentTrip = lists[0];
         const upcomingTrips = lists.slice(1);
@@ -117,22 +130,23 @@ function createNotionTripCard(list, index, isLarge = false) {
         day: 'numeric'
     });
     
-    const colorScheme = colorSchemes[index % colorSchemes.length];
-    const icon = travelIcons[index % travelIcons.length];
-    const priorityIndex = Math.floor(Math.random() * 3);
+    const backgroundImage = colorSchemes[index % colorSchemes.length];
+    const icon = travelIcons[index] || '?';
+
+    const priorityIndex = getPriorityIndex(list);
     const priority = priorityTags[priorityIndex];
     const priorityClass = priorityClasses[priorityIndex];
     
-    const duration = totalItems < 10 ? '1 Week' : totalItems < 20 ? '2 Weeks' : '3+ Weeks';
+    const duration = totalItems < 5 ? '1 Week' : totalItems < 10 ? '2 Weeks' : '3+ Weeks';
     
     card.innerHTML = `
-        <div class="trip-card-image" style="background: ${colorScheme};">
-            <span style="font-size: 4rem; z-index: 1;">${icon}</span>
+        <div class="trip-card-image" style="background: ${backgroundImage}; background-size: cover; background-position: center; background-repeat: no-repeat;">
+            <span style="font-size: 4rem; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5);">${icon}</span>
         </div>
         
         <div class="trip-card-content">
             <div class="trip-card-header-notion">
-                <span class="country-flag">🏴</span>
+                <span class="country-flag"></span>
                 <h3 class="country-name">${list.title}</h3>
             </div>
             
@@ -143,14 +157,13 @@ function createNotionTripCard(list, index, isLarge = false) {
             <p class="trip-date">Created: ${createdDate}</p>
             
             <div class="trip-duration">
-                <span>⏱️</span>
                 <span>${duration}</span>
             </div>
             
             <div class="trip-progress-section">
                 <div class="progress-label">
                     <span>Packing Progress</span>
-                    <span style="font-weight: 600; color: var(--accent-purple);">${progress}%</span>
+                    <span style="font-weight: 600; color: var(--accent-primary);">${progress}%</span>
                 </div>
                 <div class="progress-bar-container">
                     <div class="progress-bar-fill" style="width: ${progress}%;"></div>
@@ -163,13 +176,13 @@ function createNotionTripCard(list, index, isLarge = false) {
             
             <div class="trip-actions-notion">
                 <button class="btn btn-secondary" onclick="viewList('${list._id}')">
-                    <span>👁️</span> View
+                    View
                 </button>
                 <button class="btn btn-primary" onclick="editList('${list._id}')">
-                    <span>✏️</span> Edit
+                    Edit
                 </button>
                 <button class="btn btn-danger" onclick="deleteList('${list._id}')">
-                    <span>🗑️</span> Delete
+                    Delete
                 </button>
             </div>
         </div>

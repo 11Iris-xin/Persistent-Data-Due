@@ -1,4 +1,3 @@
-
 .hero-banner {
     width: 100%;
     height: 220px;
@@ -46,6 +45,7 @@
     font-size: 1.25rem;
     opacity: 0.95;
     font-weight: 400;
+    color: white;
 }
 
 .dashboard-header {
@@ -88,11 +88,184 @@
     color: var(--text-primary);
     margin-bottom: 1.5rem;
     padding-left: 0.5rem;
-    border-left: 4px solid var(--accent-purple);
+    border-left: 4px solid var(--accent-primary);
+}
+
+.trip-card-notion {
+    background: var(--bg-card);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.trip-card-notion:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    border-color: var(--accent-primary);
+}
+
+.trip-card-image {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.trip-card-content {
+    padding: 1.5rem;
+    background: var(--bg-card);
+}
+
+.trip-card-header-notion {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.country-flag {
+    font-size: 1.25rem;
+}
+
+.country-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.trip-tags {
+    margin-bottom: 0.75rem;
+}
+
+.trip-tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tag-top {
+    background: rgba(224, 108, 117, 0.15);
+    color: var(--accent-red);
+    border: 1px solid var(--accent-red);
+}
+
+.tag-middle {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--accent-orange);
+    border: 1px solid var(--accent-orange);
+}
+
+.tag-low {
+    background: rgba(95, 181, 128, 0.15);
+    color: var(--accent-green);
+    border: 1px solid var(--accent-green);
+}
+
+.trip-date {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+}
+
+.trip-duration {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.trip-progress-section {
+    margin-bottom: 1.5rem;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.progress-bar-container {
+    height: 6px;
+    background: var(--bg-tertiary);
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.trip-actions-notion {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.trip-actions-notion .btn {
+    flex: 1;
+    padding: 0.625rem;
+    font-size: 0.875rem;
+    justify-content: center;
+}
+
+.btn-secondary {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-hover);
+}
+
+.btn-primary {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--accent-primary-dark);
+}
+
+.btn-danger {
+    background: var(--accent-red);
+    color: white;
+}
+
+.btn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9375rem;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
 }
 
 .current-trip-card {
-    background: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(40, 40, 40, 0.95) 100%);
+    background: var(--bg-card);
     border-radius: 20px;
     padding: 2.5rem;
     box-shadow: var(--shadow-lg);
@@ -108,7 +281,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #A0724E, #B8956A);
+    background: linear-gradient(90deg, var(--accent-primary-dark), var(--accent-primary));
 }
 
 .trip-header {
@@ -130,9 +303,9 @@
 }
 
 .trip-tab.active {
-    background: #A0724E;
+    background: var(--accent-primary-dark);
     color: white;
-    border-color: #A0724E;
+    border-color: var(--accent-primary-dark);
     box-shadow: 0 4px 12px rgba(160, 114, 78, 0.3);
 }
 
@@ -154,7 +327,7 @@
 
 .progress-circle-large svg {
     transform: rotate(-90deg);
-    filter: drop-shadow(0 4px 12px rgba(157, 91, 210, 0.2));
+    filter: drop-shadow(0 4px 12px rgba(184, 149, 106, 0.2));
 }
 
 .progress-text-large {
@@ -196,17 +369,17 @@
 }
 
 .stat-item {
-    background: rgba(160, 114, 78, 0.1);
+    background: rgba(184, 149, 106, 0.08);
     padding: 1rem;
     border-radius: 12px;
     text-align: center;
-    border: 1px solid rgba(160, 114, 78, 0.2);
+    border: 1px solid rgba(184, 149, 106, 0.2);
 }
 
 .stat-value {
     font-size: 2rem;
     font-weight: 700;
-    color: #A0724E;
+    color: var(--accent-primary);
 }
 
 .stat-label {
@@ -236,7 +409,6 @@
     transition: all 0.3s;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(40, 40, 40, 0.95) 100%);
 }
 
 .trip-card::before {
@@ -246,13 +418,13 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #A0724E, #B8956A);
+    background: linear-gradient(90deg, var(--accent-primary-dark), var(--accent-primary));
 }
 
 .trip-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
-    border-color: var(--accent-purple);
+    border-color: var(--accent-primary);
 }
 
 .trip-card-header {
@@ -270,6 +442,7 @@
     font-size: 0.85rem;
     color: var(--text-secondary);
 }
+
 .progress-circle-small {
     width: 120px;
     height: 120px;
@@ -299,6 +472,7 @@
     font-size: 0.75rem;
     color: var(--text-secondary);
 }
+
 .card-actions {
     display: flex;
     gap: 0.75rem;
