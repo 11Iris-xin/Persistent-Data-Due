@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:3000/api';
+const API_URL = "https://packing-organizer-xinyi.onrender.com/api";
+
 
 const urlParams = new URLSearchParams(window.location.search);
 const listId = urlParams.get('id');

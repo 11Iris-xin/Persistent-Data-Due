@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:3000/api';
+const API_URL = "https://packing-organizer-xinyi.onrender.com/api";
+
 
 const form = document.getElementById('add-list-form');
 const errorMessage = document.getElementById('error-message');

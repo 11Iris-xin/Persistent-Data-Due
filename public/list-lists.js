@@ -1,6 +1,7 @@
-const API_URL = 'http://localhost:3000/api';
+const API_URL = "https://packing-organizer-xinyi.onrender.com/api";
 
-// 图片在根目录的 img 文件夹中，需要先配置 server.js
+
+
 const colorSchemes = [
   "linear-gradient(135deg, rgba(184, 149, 106, 0.6), rgba(160, 114, 78, 0.6)), url('/img/bg_1.jpeg')",
   "linear-gradient(135deg, rgba(206, 183, 179, 0.6), rgba(168, 187, 163, 0.6)), url('/img/bg_2.jpeg')",
